@@ -131,7 +131,10 @@ def telegram_bot(token):
 
 
 
-    bot.polling(non_stop=True, interval=0)
+    try:
+        bot.infinity_polling(timeout=10, long_polling_timeout = 5)
+    except Exception as e:
+        print(e)
 
 if __name__ == '__main__':
     telegram_bot(token)
